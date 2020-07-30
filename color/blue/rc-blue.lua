@@ -179,7 +179,7 @@ sysmon.widget.battery = redflat.widget.sysmon(
 -- network speed
 sysmon.widget.network = redflat.widget.net(
 	{
-		interface = "wlp60s0",
+		interface = "enp3s0",
 		alert = { up = 5 * 1024^2, down = 5 * 1024^2 },
 		speed = { up = 6 * 1024^2, down = 6 * 1024^2 },
 		autoscale = false
@@ -224,7 +224,7 @@ awful.screen.connect_for_each_screen(
 		env.wallpaper(s)
 
 		-- tags
-		awful.tag({ "Main", "Full", "Edit", "Read", "Free" }, s, { al[5], al[6], al[6], al[4], al[3] })
+		awful.tag({ "1", "2", "3", "4", "5" }, s, { al[3], al[3], al[3], al[3], al[3] })
 
 		-- layoutbox widget
 		layoutbox[s] = redflat.widget.layoutbox({ screen = s })
@@ -260,8 +260,8 @@ awful.screen.connect_for_each_screen(
 				layout = wibox.layout.fixed.horizontal,
 
 				separator,
-				env.wrapper(mail.widget, "mail", mail.buttons),
-				separator,
+				-- env.wrapper(mail.widget, "mail", mail.buttons),
+				-- separator,
 				env.wrapper(kbindicator.widget, "keyboard", kbindicator.buttons),
 				separator,
 				env.wrapper(sysmon.widget.network, "network"),

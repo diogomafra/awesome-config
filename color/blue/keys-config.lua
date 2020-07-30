@@ -6,6 +6,7 @@
 local table = table
 local awful = require("awful")
 local redflat = require("redflat")
+local xrandr = require("xrandr")
 
 -- Initialize tables and vars for module
 -----------------------------------------------------------------------------------------------------------------------
@@ -776,7 +777,16 @@ function hotkeys:init(args)
 		{
 			{ env.mod, "Control" }, "s", function() for s in screen do env.wallpaper(s) end end,
 			{} -- hidden key
+		},
+		-- {
+		-- 	{env.mod, "Control"}, "v", function() xrandr.xrandr() end,
+		-- 	{ description = "Adjust monitor", group = "Diogo" }
+		-- },
+		{
+			{env.mod, "Control"}, "v", function() client.focus:move_to_screen() end,
+			{ description = "Move to another monitor", group = "Diogo" }
 		}
+
 	}
 
 	-- Client keys
@@ -855,7 +865,7 @@ function hotkeys:init(args)
 	--------------------------------------------------------------------------------
 	self.mouse.client = awful.util.table.join(
 		awful.button({}, 1, function (c) client.focus = c; c:raise() end),
-		awful.button({}, 2, awful.mouse.client.move),
+		awful.button({ env.mod }, 2, awful.mouse.client.move),
 		awful.button({ env.mod }, 3, awful.mouse.client.resize),
 		awful.button({}, 8, function(c) c:kill() end)
 	)
