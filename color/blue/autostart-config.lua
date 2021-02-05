@@ -31,6 +31,8 @@ function autostart.run()
 	-- awful.spawn.with_shell("gpaste-client start")
 	-- awful.spawn.with_shell("transmission-gtk -m")
 	-- awful.spawn.with_shell("pragha --toggle_view")
+	--awful.spawn.with_shell("autorandr --change")
+	awful.spawn("autorandr --change")
 end
 
 -- Read and commads from file and spawn them
